@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { RecipeService } from '../../recipes.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -8,9 +9,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 export class RecipeItemComponent implements OnInit {
 
-  @Output() recipeSelected = new EventEmitter<void>();
-
-
   /**
    * ! if we use strict mode we need to initialize recipe
    *  https://www.udemy.com/course/the-complete-guide-to-angular-2/learn/lecture/6656142#questions/13160550
@@ -18,17 +16,18 @@ export class RecipeItemComponent implements OnInit {
   @Input() recipe = {
     name: '',
     description: '',
-    imagePath: ''
+    imagePath: '',
+    ingredients: []
   };
 
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
   }
 
   onSelected() {
-    this.recipeSelected.emit();
+    this.recipeService.recipeSelected.emit(this.recipe);
   }
 
 }
