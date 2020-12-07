@@ -17,8 +17,7 @@ export class ServersComponent implements OnInit {
   }
 
   onReload() {
-    console.log(this.router);
-    console.log(this.route);
+
     //this.router.navigate(['servers'], { relativeTo: this.route });
   }
 
