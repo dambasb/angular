@@ -16,6 +16,7 @@ export class RecipesListComponent implements OnInit {
     imagePath: '',
     ingredients: []
   }];
+  index: number = 0;
 
   constructor(private recipeService: RecipeService) { }
 
